@@ -3,6 +3,25 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* ====================== 여기부터 추가된 부분 ======================
+     기존 --background/--foreground 와 같은 방식(원시값을 :root에 선언 후
+     @theme inline에서 매핑)으로 챗봇 디자인 토큰을 추가했습니다.
+     이름 충돌을 피하려고 전부 chat- 접두사를 붙였습니다. */
+  --chat-bg-deep: #070b33;
+  --chat-bg: #0a0f3d;
+  --chat-bg-soft: #131a66;
+
+  --chat-bot: #2f6bff;
+  --chat-bot-deep: #1c4fd6;
+  --chat-user: #df3df0;
+  --chat-user-deep: #b923cf;
+
+  --chat-avatar-bot: #f8b73c;
+  --chat-avatar-user: #9be8e2;
+
+  --chat-accent: #34d8a0;
+  /* =================================================================== */
 }
 
 @theme inline {
@@ -10,6 +29,26 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ====================== 여기부터 추가된 부분 ======================
+     아래 토큰들 덕분에 컴포넌트에서 bg-chat-bot, text-chat-accent,
+     font-display, font-body 같은 Tailwind 유틸리티를 바로 쓸 수 있습니다. */
+  --color-chat-bg-deep: var(--chat-bg-deep);
+  --color-chat-bg: var(--chat-bg);
+  --color-chat-bg-soft: var(--chat-bg-soft);
+  --color-chat-bot: var(--chat-bot);
+  --color-chat-bot-deep: var(--chat-bot-deep);
+  --color-chat-user: var(--chat-user);
+  --color-chat-user-deep: var(--chat-user-deep);
+  --color-chat-avatar-bot: var(--chat-avatar-bot);
+  --color-chat-avatar-user: var(--chat-avatar-user);
+  --color-chat-accent: var(--chat-accent);
+
+  --font-display: var(--font-baloo);
+  /* layout.tsx의 baloo2 변수 */
+  --font-body: var(--font-inter);
+  /* layout.tsx의 inter 변수 */
+  /* =================================================================== */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,3 +63,34 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ====================== 여기부터 추가된 부분 ======================
+   타이핑 인디케이터(점 3개)용 애니메이션. Tailwind의 animate-bounce는
+   점들이 동시에 튀어서, 살짝 어긋나게 직접 keyframes로 정의했습니다. */
+@keyframes typing-bounce {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+
+  30% {
+    transform: translateY(-0.2rem);
+    opacity: 1;
+  }
+}
+
+.animate-typing-bounce {
+  animation: typing-bounce 1.1s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-typing-bounce {
+    animation: none;
+    opacity: 0.8;
+  }
+}
+
+/* =================================================================== */
