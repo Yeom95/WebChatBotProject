@@ -14,13 +14,10 @@ import Composer from './components/Composer';
 export default function Home() {
   return (
     // 모바일: 화면 전체를 채우는 풀스크린 / sm(640px) 이상: 카드 형태로 중앙 정렬
-    <div className="flex min-h-dvh justify-center sm:items-center sm:p-10">
+    <div className="flex min-h-dvh w-full flex-col bg-chat-bg">
       <div
-        className="flex h-dvh w-full max-w-[480px] flex-col overflow-hidden bg-chat-bg-soft
-          sm:h-[min(100dvh,46rem)] sm:rounded-[1.75rem] sm:border sm:border-white/10
-          sm:shadow-[0_30px_70px_-20px_rgba(0,0,0,0.55)]"
+        className="mx-auto flex w-full max-w-2xl flex-1 flex-col"
       >
-        <ChatHeader />
         <ChatThread />
         <Composer />
       </div>

@@ -1,8 +1,17 @@
-export default function TypingIndicator() {
+interface TypingIndicatorProps {
+  scale: number //MessageBubble과 동일한 배율을 받아 아바타 크기를 맞춤
+}
+
+export default function TypingIndicator({ scale }: TypingIndicatorProps) {
+
+  const avatarPx = Math.round(36 * scale)
+  const avatarFontRem = (1.125 * scale).toFixed(3)
+
   return (
     <div className="flex items-end gap-2 justify-start" aria-label="입력 중">
       <span
         aria-hidden="true"
+        style={{ width: avatarPx, height: avatarPx, fontSize: `${avatarFontRem}rem` }}
         className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-chat-avatar-bot text-lg"
       >
         🐶
