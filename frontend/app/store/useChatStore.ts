@@ -14,9 +14,8 @@ interface ChatState {
   sendMessage: (rawText: string) => Promise<void>
 }
 
-// backend/main.py 에서 CORS로 http://localhost:3000 을 허용해뒀기 때문에
-// 프론트(3000번 포트)에서 백엔드(8000번 포트)로 바로 fetch 할 수 있습니다.
-const API_URL = 'http://localhost:8000/api/chat'
+// const API_URL = 'http://localhost:8000/api/chat'
+const API_URL = '/api/chat'
 
 const useChatStore = create<ChatState>((set) => ({
   messages: [
