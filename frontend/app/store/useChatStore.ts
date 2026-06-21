@@ -20,8 +20,7 @@ const API_URL = 'http://localhost:8000/api/chat'
 
 const useChatStore = create<ChatState>((set) => ({
   messages: [
-    { id: 1, role: 'bot', text: 'Yo Dawg Wassup?' },
-    { id: 2, role: 'user', text: 'Nothing, Wassup with Mew?' },
+    { id: 1, role: 'bot', text: '안녕하세요?' },
   ],
   isTyping: false,
 
